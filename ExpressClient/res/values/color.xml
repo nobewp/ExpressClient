@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="common_botton_bar_blue">#2ea7e0</color>
+    <!-- 红色 -->
+    <color name="red">#FF0000</color>
+    <!-- 黄色 -->
+    <color name="yellow">#FFFF00</color>
+    <color name="doctor_cirlor_name">#0dc3ce</color>
+    <color name="lightyellow">#EFB36B</color>
+    <color name="ybyellow">#EDD338</color>
+    <!-- 绿色 -->
+    <color name="green">#00FF00</color>
+    <!-- 蓝色 -->
+    <color name="blue">#0000FF</color>
+    <color name="bluesky">#007CFF</color>
+    <color name="hailanse">#07D3DA</color>
+    <color name="purse_blue">#0dc3ce</color>
+    <color name="purse_blue_press">#0a9ca5</color>
+    <!-- 橙色 -->
+    <color name="orange">#FFA500</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <!-- 金色 -->
+    <color name="golden">#F7A61E</color>
+    <!-- 灰色  文本列表 -->
+    <color name="gray_text">#666666</color>
+    <color name="gray_item_selector">#d9d9d9</color>
+    <!-- 白色 -->
+    <color name="white">#FFFFFF</color>
+    <!-- 头背景色 -->
+    <color name="tab_color">#FD7731</color>
+    <!-- 文本 注释   辅助数字 -->
+    <color name="tab_color_nomal">#999999</color>
+    <!-- 透明黑色 -->
+    <color name="transparentBlack">#50000000</color>
+    <color name="transparentBlack1">#80000000</color>
+    <color name="transparentBlack2">#B2000000</color>
+    <color name="transparentBlack3">#3C000000</color>
+    <!-- 文本标题 -->
+    <color name="my_textcolor">#333333</color>
+    <color name="my_textcolor1">#cccccc</color>
+    <!-- 分割线 边框颜色 -->
+    <color name="my_line">#e8e8e8</color>
+    <color name="line_color">#ececec</color>
+    <!-- 重要数字 -->
+    <color name="impor_number">#ffa247</color>
+    <color name="image_checked_bg">#66000000</color>
+    <!-- 半透明白色 -->
+    <color name="alphaWhite">#90FFFFFF</color>
+    <color name="huise">#f2f2f2</color>
+
+    <!-- 我的线 灰色 -->
+    <color name="my_line_1">#2c9daf</color>
+    <color name="codex_item_bg">#f8f8f8</color>
+    <color name="check_in_num">#f4b311</color>
+
+    </resources>

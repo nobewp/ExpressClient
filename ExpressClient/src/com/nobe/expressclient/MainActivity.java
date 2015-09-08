@@ -1,14 +1,12 @@
 package com.nobe.expressclient;
 
-import java.util.ArrayList;
-
-import android.app.Activity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.nobe.expressclient.model.ImageInfo;
-import com.nobe.expressclient.view.MyGallery;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 /**
  * 
@@ -17,38 +15,74 @@ import com.nobe.expressclient.view.MyGallery;
  * @2015-9-8上午8:43:21
  * 
  */
-public class MainActivity extends Activity
+public class MainActivity extends FragmentActivity implements OnClickListener
 {
+	private Fragment main1;
+	private Fragment main2;
 
-	private TextView titleView;
-	private LinearLayout ovalLayout;
-	private TextView tvCircle;
-	private MyGallery galley;
+	private Fragment[] fragments;
 
-	private ArrayList<ImageInfo> imageInfos = new ArrayList<ImageInfo>();
-
-	private int[] imageId = new int[] { R.drawable.img_default_bg,
-			R.drawable.img_default_bg, R.drawable.img_default_bg };
+	private int index;
+	private int currentTabIndex;
+	Button[] btn_tab;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		galley = (MyGallery) findViewById(R.id.gallery);
-		titleView = (TextView) findViewById(R.id.title);
-		ovalLayout = (LinearLayout) findViewById(R.id.ovalLayout);
 
-		for (int i = 0; i < 3; i++)
-		{
-			ImageInfo imageInfo = new ImageInfo();
-			imageInfo.setImgUrl("http://images.csdn.net/20150817/1.jpg");
-			imageInfos.add(imageInfo);
-		}
-		// tvCircle = (TextView) view.findViewById(R.id.tv_circle_num);
-		galley.start(imageInfos, imageId, 3000, ovalLayout, titleView,
-				R.drawable.point_focus, R.drawable.point_default);
-
+		initview();
+		getSupportFragmentManager().beginTransaction()
+				.add(R.id.fragment_container, main1)
+				.add(R.id.fragment_container, main2).hide(main2).show(main1)
+				.commit();
 	}
 
+	public void initview()
+	{
+		main1 = new Main1();
+		main2 = new Main2();
+		fragments = new Fragment[] { main1, main2 };
+		btn_tab = new Button[2];
+		btn_tab[0] = (Button) findViewById(R.id.btn_tab1);
+		btn_tab[1] = (Button) findViewById(R.id.btn_tab3);
+
+		btn_tab[0].setOnClickListener(this);
+		btn_tab[1].setOnClickListener(this);
+		btn_tab[0].setSelected(true);
+	}
+
+	@Override
+	public void onClick(View v)
+	{
+		switch (v.getId())
+		{
+		case R.id.btn_tab1:
+			index = 0;
+			break;
+		case R.id.btn_tab3:
+			index = 1;
+			break;
+
+		default:
+			break;
+		}
+
+		if (currentTabIndex != index)
+		{
+			FragmentTransaction trx = getSupportFragmentManager()
+					.beginTransaction();
+			trx.hide(fragments[currentTabIndex]);
+			if (!fragments[index].isAdded())
+			{
+				trx.add(R.id.fragment_container, fragments[index]);
+			}
+			trx.show(fragments[index]).commitAllowingStateLoss();
+			btn_tab[currentTabIndex].setSelected(false);
+			btn_tab[index].setSelected(true);
+			currentTabIndex = index;
+		}
+
+	}
 }
